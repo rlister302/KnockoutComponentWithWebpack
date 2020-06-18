@@ -1,0 +1,78 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+    <div class="hello">
+        <p>First name: <strong data-bind="text: firstName"></strong></p>
+        <p>Last name: <strong data-bind="text: lastName"></strong></p>
+
+        <p>First Name: <input data-bind="value: firstName" /></p>
+        <p>Last name: <input data-bind="value: lastName" /></p>
+
+    </div>
+
+    <div class="like">
+        <ul  data-bind="foreach: products">
+            <li class="product">
+                <strong data-bind="text: name"></strong>
+                <like-widget params="value: userRating"></like-widget>
+            </li>
+        </ul>
+    </div>
+
+    @*<hello-widget></hello-widget>*@
+</div>
+
+<script src="~/lib/knockout-latest.debug.js"></script>
+<script src="~/dist/hello.bundle.js"></script>
+<script>
+
+    hello.HelloWorld.trigger($('.hello'));
+    hello.HelloWorld.triggerComp($('.like'));
+
+    //ko.components.register('hello-widget', {
+    //    viewModel: {},
+    //    template: '<div>Hello!</div>'
+    //})
+
+    //ko.components.register('like-widget', {
+    //    viewModel: function (params) {
+    //        // Data: value is either null, 'like', or 'dislike'
+    //        this.chosenValue = params.value;
+    //        console.log("creating")
+    //        // Behaviors
+    //        this.like = function () { this.chosenValue('like'); }.bind(this);
+    //        this.dislike = function () { this.chosenValue('dislike'); }.bind(this);
+    //    },
+    //    template:
+    //        '<div class="like-or-dislike" data-bind="visible: !chosenValue()">\
+    //        <button data-bind="click: like">Like it</button>\
+    //        <button data-bind="click: dislike">Dislike it</button>\
+    //    </div>\
+    //    <div class="result" data-bind="visible: chosenValue">\
+    //        You <strong data-bind="text: chosenValue"></strong> it\
+    //    </div>'
+    //});
+
+    //function Product(name, rating) {
+    //    this.name = name;
+    //    this.userRating = ko.observable(rating || null);
+    //}
+
+    //function MyViewModel() {
+    //    this.products = [
+    //        new Product('Garlic bread'),
+    //        new Product('Pain au chocolat'),
+    //        new Product('Seagull spaghetti', 'like') // This one was already 'liked'
+    //    ];
+    //}
+
+    //ko.applyBindings(new MyViewModel(), $('.like')[0]);
+
+
+
+</script>

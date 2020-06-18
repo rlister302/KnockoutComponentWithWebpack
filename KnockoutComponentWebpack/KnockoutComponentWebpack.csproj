@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Views\Home\hello.ts" />
+    <None Remove="Views\Home\Product.ts" />
+    <None Remove="Views\Home\ProductViewModel.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="Views\Home\hello.ts" />
+    <TypeScriptCompile Include="Views\Home\Product.ts" />
+    <TypeScriptCompile Include="Views\Home\ProductViewModel.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="src\" />
+  </ItemGroup>
+
+	<Target Name="Webpack" AfterTargets="Build">
+		<Message Text="Starting to pack now!"></Message>
+		<Exec Command="npx webpack --config webpack.config.js" ContinueOnError="false"></Exec>
+		<!--<Exec Command="npx webpack config webpack.style.config.js" ContinueOnError="false"></Exec>-->
+	</Target>
+
+</Project>
