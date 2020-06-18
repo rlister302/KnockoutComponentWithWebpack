@@ -23,7 +23,6 @@
 	<Target Name="Webpack" AfterTargets="Build">
 		<Message Text="Starting to pack now!"></Message>
 		<Exec Command="npx webpack --config webpack.config.js" ContinueOnError="false"></Exec>
-		<!--<Exec Command="npx webpack config webpack.style.config.js" ContinueOnError="false"></Exec>-->
 	</Target>
 
 </Project>
